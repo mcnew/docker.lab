@@ -1,4 +1,4 @@
-FROM tomcat:8.0.24-jre8
+FROM java:8-jdk
 
 RUN gpg --keyserver pool.sks-keyservers.net --recv-keys \
 	05AB33110949707C93A279E3D3EFE6B686867BA6 \
