@@ -5,7 +5,7 @@ RUN curl -fSLs http://mirrors.jenkins-ci.org/war-stable/1.609.2/jenkins.war -o /
 && groupadd -g 50000 service \
 && useradd -u 50000 -m -g service service
 
-ENV JENKINS_HOME=/home/service \
+ENV JENKINS_HOME=/home/service/.jenkins \
     JENKINS_SLAVE_AGENT_PORT=50000
 
 USER service
