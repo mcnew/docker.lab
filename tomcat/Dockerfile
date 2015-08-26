@@ -26,6 +26,9 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys \
 VOLUME /home/service/logs
 
 ENV CATALINA_HOME=/opt/apache-tomcat CATALINA_BASE=/home/service
+
+USER service
+WORKDIR /home/service
 EXPOSE 8080 8009
 CMD [ "/opt/apache-tomcat/bin/catalina.sh", "run" ]
 
