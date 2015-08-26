@@ -13,11 +13,11 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys \
 	DCFD35E0BF8CA7344752DE8B6FB21E8933C60243 \
 	F3A04C595DB5B6A5F1ECA43E3B7BBB100D811BBE \
 	F7DA48BB64BCB84ECBA7EE6935CD23C10D498E23 \
-&& curl -fSLs "https://www.apache.org/dist/tomcat/tomcat-8/v8.0.24/bin/apache-tomcat-8.0.24.tar.gz" -o /tmp/tomcat.tar.gz \
-&& curl -fSLs "https://www.apache.org/dist/tomcat/tomcat-8/v8.0.24/bin/apache-tomcat-8.0.24.tar.gz.asc" -o /tmp/tomcat.tar.gz.asc \
+&& curl -fSLs "https://www.apache.org/dist/tomcat/tomcat-8/v8.0.26/bin/apache-tomcat-8.0.26.tar.gz" -o /tmp/tomcat.tar.gz \
+&& curl -fSLs "https://www.apache.org/dist/tomcat/tomcat-8/v8.0.26/bin/apache-tomcat-8.0.26.tar.gz.asc" -o /tmp/tomcat.tar.gz.asc \
 && gpg --verify /tmp/tomcat.tar.gz.asc \
 && tar -xf /tmp/tomcat.tar.gz -C /opt \
-&& ln -s apache-tomcat-8.0.24 /opt/apache-tomcat \
+&& ln -s apache-tomcat-8.0.26 /opt/apache-tomcat \
 && rm -rf /opt/apache-tomcat/bin/*.bat /tmp/tomcat.tar.gz* /opt/apache-tomcat/work /opt/apache-tomcat/logs /opt/apache-tomcat/temp \
 && mv /opt/apache-tomcat/conf /opt/apache-tomcat/webapps /home/service \
 && mkdir /home/service/lib /home/service/work /home/service/logs /home/service/temp \
