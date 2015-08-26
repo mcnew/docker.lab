@@ -1,4 +1,4 @@
-FROM java:8-jdk
+FROM razzek/lab.java:8
 
 RUN gpg --keyserver pool.sks-keyservers.net --recv-keys \
 	05AB33110949707C93A279E3D3EFE6B686867BA6 \
@@ -19,17 +19,13 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys \
 && tar -xf /tmp/tomcat.tar.gz -C /opt \
 && ln -s apache-tomcat-8.0.24 /opt/apache-tomcat \
 && rm -rf /opt/apache-tomcat/bin/*.bat /tmp/tomcat.tar.gz* /opt/apache-tomcat/work /opt/apache-tomcat/logs /opt/apache-tomcat/temp \
-&& groupadd -g 50000 service \
-&& useradd -u 50000 -m -g service service \
 && mv /opt/apache-tomcat/conf /opt/apache-tomcat/webapps /home/service \
 && mkdir /home/service/lib /home/service/work /home/service/logs /home/service/temp \
-&& chown -R service:service /home/service
+&& chown -R service:service /home/service/*
 
 VOLUME /home/service/logs
 
 ENV CATALINA_HOME=/opt/apache-tomcat CATALINA_BASE=/home/service
-USER service
 EXPOSE 8080 8009
-WORKDIR /home/service
 CMD [ "/opt/apache-tomcat/bin/catalina.sh", "run" ]
 
