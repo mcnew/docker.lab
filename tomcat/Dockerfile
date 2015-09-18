@@ -23,8 +23,6 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys \
 && mkdir /home/service/lib /home/service/work /home/service/logs /home/service/temp \
 && chown -R service:service /home/service/*
 
-VOLUME /home/service/logs
-
 ENV CATALINA_HOME=/opt/apache-tomcat CATALINA_BASE=/home/service
 
 USER service
